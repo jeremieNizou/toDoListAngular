@@ -1,0 +1,49 @@
+<div id="titre" class="divs">
+	<h1>Todo List</h1>
+</div>
+
+<div id="todoList" class="divs">
+	<div class="divs">
+		Rechercher : <input [(ngModel)]="recherche.nom">
+	</div>
+	<form (ngSubmit)="ajouterTodo(newTodo)">
+		<input placeholder="Que devez-vous faire ?" [(ngModel)]="newTodo.nom" class="todoItem" type="text" name="newTodo" [myFocus]="true">
+	</form>
+
+	<div *ngIf="chargement">
+		Chargement en cours...
+	</div>
+
+	<div *ngIf="!chargement">
+		<div *ngFor="let todo of todos; let i = index " class="divFade divs">
+			<input type="checkbox" [(ngModel)]="selectionne[i]" (change)="changeSelectionIndex(i)">
+
+			<div *ngIf="!edit[i]" class="inlineBox choix">
+				<a [ngClass]="{selected: selectionne[i]}" href="todos/{{todo._id}}">{{todo.nom}}</a>
+
+				<div class="inlineBox pull-right">
+					<button class="pull-left" (click)="modifier(i)">Modifier</button>
+					<span class="supprime pull-left" (click)="supprimerTodo(todo, i)">X</span>
+				</div>
+			</div>
+
+			<div *ngIf="edit[i]" class="inlineBox choix">
+				<form (ngSubmit)="confirmer(todo, i)" class="inlineBox inputForm">
+					<input value="{{todo.nom}}" [(ngModel)]="changeTodo.nom" class="inputText" name="todo" [myFocus]="true">
+				</form>
+
+				<div class="inlineBox pull-right">
+					<button class="pull-left" (click)="confirmer(todo, i)">Confirmer</button>
+					<button class="pull-left" (click)="modifier(i)">Annuler</button>
+					<span class="supprime pull-left" (click)="supprimerTodo(todo, i)">X</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="divs">
+			<input type="checkbox" [(ngModel)]="toutSelectionne" (change)="changeSelectionTotal()">
+			<button (click)="changeSelectionTotalBouton()" *ngIf="!toutSelectionne">Tout Cocher</button>
+			<button (click)="changeSelectionTotalBouton()" *ngIf="toutSelectionne">Tout Décocher</button>
+			<button (click)="supprimeToutSelectionne()">Supprimer la selection</button>
+		</div>
+	</div>

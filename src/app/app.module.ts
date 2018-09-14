@@ -1,16 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { TodosComponent } from './todos/todos.component';
+import { TodoComponent } from './todo/todo.component';
+import { TodosService } from './services/todos.service';
+import { FocusDirective } from './directives/focus.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+   	AppComponent,
+		AccueilComponent,
+		TodosComponent,
+		TodoComponent,
+		FocusDirective
   ],
   imports: [
-    BrowserModule
+   	BrowserModule,
+		FormsModule,
+		AppRoutingModule,
+		HttpClientModule
   ],
-  providers: [],
+  providers: [TodosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

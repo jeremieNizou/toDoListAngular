@@ -1,0 +1,56 @@
+<div id="titre" class="divs">
+	<h1>Todo List</h1>
+</div>
+
+<div class="divs">
+	<div class="col-xs-1 col-sm-1 col-md-3 divBouton">
+		<a href="/todos" type="button" class="btn btn-primary" id="boutonRetour">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+		</a>
+	</div>
+	<div class="col-xs-12 col-sm-10 col-md-6">
+		<div id="todoList" class="divs">
+			<div class="divs">
+				<div id="tache"><b>Tâche :</b></div>
+				<div *ngIf="!editTodo">
+					<span>{{todo.nom}}</span>
+					<button class="pull-right" (click)="modifierTodo()">Modifier</button>
+				</div>
+
+				<div *ngIf="editTodo">
+					<form (submit)="confirmerTodo(todo)" class="inlineBox inputForm">
+						<input #nom value="{{todo.nom}}" [(ngModel)]="changeTodo.nom" class="inputText" name="nom" [myFocus]="true">
+					</form>
+					<div class="inlineBox pull-right">
+						<button class="pull-left" (click)="confirmerTodo(todo)">Confirmer</button>
+						<button class="pull-left" (click)="modifierTodo()">Annuler</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="divs">
+				<div id="presentation"><b>Présentation :</b></div>
+				<div *ngIf="!editPres">
+					<div *ngIf="presExiste">
+						<span>{{todo.presentation}}</span>
+						<button class="pull-right" (click)="modifierPres()">Modifier</button>
+					</div>
+					<div *ngIf="!presExiste">
+						<em>Aucune</em>
+						<button class="pull-right" (click)="modifierPres()">&nbsp;Ajouter&nbsp;</button>
+					</div>
+				</div>
+
+				<div *ngIf="editPres">
+					<form (submit)="confirmerPres(todo)" class="inlineBox inputForm">
+						<input #presentation value="{{todo.presentation}}" [(ngModel)]="changeTodo.presentation" class="inputText" name="presentation" [myFocus]="true">
+					</form>
+					<div class="inlineBox pull-right">
+						<button class="pull-left" (click)="confirmerPres(todo)">Confirmer</button>
+						<button class="pull-left" (click)="modifierPres()">Annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>  
+</div>
