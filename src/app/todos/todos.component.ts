@@ -72,7 +72,7 @@ export class TodosComponent implements OnInit {
 					this.edit.splice(index, 1);
 
 					// Si tous les autres item sont sélectionnés, il faut actualiser 'toutSelectionne'
-					var nbSelectionne = 0;
+					var nbSelectionne = 0; 
 					for (var i = 0; i < this.todos.length; i++) {
 						if (this.selectionne[i] === true) {
 							nbSelectionne++;
