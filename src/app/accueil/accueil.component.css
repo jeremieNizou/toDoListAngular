@@ -7,3 +7,7 @@ h2{
 div {
 	text-align: center;
 }
+
+#description {
+	margin: 40px;
+}
