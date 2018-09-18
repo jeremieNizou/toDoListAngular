@@ -15,7 +15,7 @@
 	</div>
 
 	<div *ngIf="!chargement">
-		<div *ngFor="let todo of todos; let i = index " class="divFade divs">
+		<div *ngFor="let todo of todos | myFilter:recherche; let i = index " class="divFade divs">
 			<input type="checkbox" [(ngModel)]="selectionne[i]" (change)="changeSelectionIndex(i)">
 
 			<div *ngIf="!edit[i]" class="inlineBox choix">

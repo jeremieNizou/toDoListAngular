@@ -11,6 +11,7 @@ import { TodosComponent } from './todos/todos.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodosService } from './services/todos.service';
 import { FocusDirective } from './directives/focus.directive';
+import { MyFilterPipe } from './my-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FocusDirective } from './directives/focus.directive';
 		AccueilComponent,
 		TodosComponent,
 		TodoComponent,
-		FocusDirective
+		FocusDirective,
+		MyFilterPipe
   ],
   imports: [
    	BrowserModule,
